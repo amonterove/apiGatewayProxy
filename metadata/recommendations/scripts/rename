@@ -1,0 +1,7 @@
+#!/bin/bash
+
+counter=0
+for file in `ls csv/*`; do
+	 counter=$((counter + 1))
+	 mv $file trk_data_${counter}.csv 
+done;

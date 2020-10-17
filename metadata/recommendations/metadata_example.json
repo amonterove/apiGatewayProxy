@@ -1,0 +1,35 @@
+{
+    "id": "10000",
+    "properties": {
+        "access_format": "Type 6",
+        "content_type": "series",
+        "genres": [
+            "5000",
+            "5001",
+            "5002"
+        ],
+        "regions": [
+            "AR",
+            "BR",
+            "CL",
+            "CO",
+            "CR",
+            "DO",
+            "EC",
+            "GT",
+            "HN",
+            "MX",
+            "NI",
+            "PA",
+            "PE",
+            "PY",
+            "SV",
+            "UY"
+        ],
+        "status": "disabled",
+        "talents": [
+            "10",
+            "11"
+        ]
+    }
+}

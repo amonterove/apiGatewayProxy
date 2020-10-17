@@ -1,0 +1,9 @@
+#!/bin/bash
+
+counter=0
+for file in `ls *.csv`; do
+    echo "Procesando $file"
+    counter=$((counter + 1))
+    /usr/bin/python ../csvEventToJson.py --filename=$file
+    echo "$file procesado"
+done;

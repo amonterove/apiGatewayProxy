@@ -1,0 +1,46 @@
+{
+  "comment":" This config file uses default settings for all but the required values see README.md for docs",
+  "id": "default",
+  "description": "Default settings",
+  "engineFactory": "org.template.RecommendationEngine",
+  "datasource": {
+    "params" : {
+      "name": "view events",
+      "appName": "recommendations",
+      "eventNames": ["purchase", "view"]
+    }
+  },
+  "sparkConf": {
+    "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+    "spark.kryo.registrator": "org.apache.mahout.sparkbindings.io.MahoutKryoRegistrator",
+    "spark.kryo.referenceTracking": "false",
+    "spark.kryoserializer.buffer": "300m",
+    "spark.executor.memory": "8g",
+    "es.index.auto.create": "true"
+  },
+  "algorithms": [
+    {
+      "comment": "simplest setup where all values are default, popularity based backfill, must add eventsNames",
+      "name": "ur",
+      "params": {
+        "appName": "recommendations",
+        "indexName": "recommend",
+        "typeName": "groups",
+        "comment": "must have data for the first event or the model will not build, other events are optional",
+        "eventNames": ["view", "purchase"],
+        "blacklistEvents": ["view", "purchase"],
+        "num": 20,
+	"fields": [
+	  {
+            "name": "status",
+            "values": "disabled",
+            "bias": -1000000
+	  }
+	],
+        "recsModel": "backfill",
+        "backfillField": "popular"
+      }
+    }
+  ]
+}
+
